@@ -52,7 +52,12 @@ const seed = async () => {
       items: [
         { product: products[2]._id, quantity: 3 }
       ],
-      totalAmount: 150 * 3,
+      totalAmount: calculateTotalAmount(
+        [
+          { product: products[2]._id, quantity: 3 }
+        ],
+        products
+      ),
       status: "completed",
       orderDate: new Date("2025-02-01")
     }
