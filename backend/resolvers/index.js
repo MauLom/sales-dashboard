@@ -1,12 +1,8 @@
+const getCustomerSpending = require("./queries/getCustomerSpending");
+
 module.exports = {
   Query: {
-    getCustomerSpending: () => {
-      return {
-        totalSpent: 0,
-        averageOrderValue: 0,
-        lastOrderDate: null
-      };
-    },
+    getCustomerSpending,
     getTopSellingProducts: () => [],
     getSalesAnalytics: () => ({
       totalRevenue: 0,
@@ -15,3 +11,4 @@ module.exports = {
     })
   }
 };
+
