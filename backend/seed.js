@@ -34,7 +34,12 @@ const seed = async () => {
         { product: products[0]._id, quantity: 1 },
         { product: products[2]._id, quantity: 2 }
       ],
-      totalAmount: 1000 + 150 * 2,
+      totalAmount: (() => {
+        const product1Price = 1000;
+        const product2Price = 150;
+        const product2Quantity = 2;
+        return product1Price + product2Price * product2Quantity;
+      })(),
       status: "completed",
       orderDate: new Date("2024-12-01")
     },
