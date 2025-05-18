@@ -14,7 +14,7 @@ export default function CustomerSearchList({ onSelect }) {
   );
 
   return (
-    <Box border="1px solid #ccc" borderRadius="md" p={4} mt={4} maxH="300px" overflowY="auto">
+    <Box borderWidth="1px" borderColor="gray.200" borderRadius="md" p={4} mt={4} maxH="300px" overflowY="auto">
       <Text fontWeight="bold" mb={2}>Select a Customer:</Text>
       <VStack align="stretch" spacing={2}>
         {data.getAllCustomers.map(customer => (
