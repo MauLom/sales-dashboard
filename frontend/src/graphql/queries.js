@@ -9,3 +9,13 @@ export const GET_CUSTOMER_SPENDING = gql`
     }
   }
 `;
+
+export const GET_TOP_PRODUCTS = gql`
+  query GetTopSellingProducts($limit: Int!) {
+    getTopSellingProducts(limit: $limit) {
+      name
+      quantitySold
+      price
+    }
+  }
+`;
