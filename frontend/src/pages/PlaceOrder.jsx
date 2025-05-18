@@ -14,8 +14,8 @@ export default function PlaceOrder() {
     try {
       const items = JSON.parse(productsInput);
       placeOrder({ variables: { input: { customerId, items } } });
-    } catch {
-      setJsonError(true);
+    } catch { 
+      alert("Invalid JSON format for products input. Please check your input.");
     }
   };
 

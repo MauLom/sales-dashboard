@@ -1,70 +1,147 @@
-# Getting Started with Create React App
+# 🧩 Sales & Revenue Dashboard
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+Full-Stack take-home assignment for an e-commerce analytics dashboard.
 
-## Available Scripts
+## 📦 Project Structure
 
-In the project directory, you can run:
+```
+sales-dashboard/
+├── backend/       # Node.js + Express + Apollo Server + MongoDB
+└── frontend/      # React + Apollo Client + Chakra UI
+```
 
-### `npm start`
+---
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+## 🚀 Quick Start
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+### 🔧 Backend Setup
 
-### `npm test`
+```bash
+cd backend
+npm install
+cp .env.example .env
+npm run dev       # Start server with nodemon (local dev)
+```
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+To seed test data:
+```bash
+docker exec -it sales-backend node seed.js
+```
 
-### `npm run build`
+📂 `.env` example:
+```
+MONGO_URI=mongodb://mongo:27017/sales_dashboard
+```
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+Backend GraphQL available at:
+`http://localhost:4000/graphql`
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+---
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+### ⚛️ Frontend Setup
 
-### `npm run eject`
+```bash
+cd frontend
+npm install
+npm start
+```
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+Frontend available at:
+`http://localhost:3000`
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+---
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+## 🐳 Dockerized Deployment
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+To build and run the entire stack with Docker:
 
-## Learn More
+```bash
+docker compose up --build -d
+```
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+Then, manually seed the database:
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+```bash
+docker exec -it sales-backend node seed.js
+```
 
-### Code Splitting
+Access:
+- Frontend: `http://YOUR_SERVER_IP:8080`
+- Backend: `http://YOUR_SERVER_IP:4000/graphql`
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+---
 
-### Analyzing the Bundle Size
+## 🔍 Functional Pages
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+### 1. Customer Dashboard `/`
+- Input: Customer ID
+- Output:
+  - Total spent
+  - Average order value
+  - Last order date
 
-### Making a Progressive Web App
+### 2. Top Products `/top-products`
+- Filter: Limit (5, 10, 20)
+- Output:
+  - Name
+  - Quantity sold
+  - Price
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+### 3. Sales Analytics `/sales-analytics`
+- Input: Date range (start + end)
+- Output:
+  - Total revenue
+  - Completed orders
+  - Bar chart of revenue per category
 
-### Advanced Configuration
+### 4. Customer Orders `/orders`
+- Input: Customer ID
+- Pagination (Next / Prev)
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
+### 5. Place Order `/place-order`
+- Input: Customer ID, product list (JSON)
+- Creates a new order
 
-### Deployment
+---
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
+## 🧠 Tech Stack
 
-### `npm run build` fails to minify
+### Backend
+- Node.js, Express, Apollo Server
+- MongoDB, Mongoose
+- GraphQL + Aggregation Pipeline
+- Indexed fields for performance (`orderDate`, `status`)
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+### Frontend
+- React.js
+- Apollo Client
+- Chakra UI
+- Recharts
+- React Router DOM
+
+---
+
+## 📁 Directory Overview
+
+```
+/backend
+  ├── models/
+  ├── resolvers/
+  ├── schema/
+  ├── server.js
+  ├── seed.js
+/frontend
+  └── src/
+      ├── components/
+      ├── pages/
+      ├── graphql/
+      ├── App.js
+      ├── index.js
+```
+
+---
+
+
+## 👤 Author
+
+Mauricio Lombano – 2025
