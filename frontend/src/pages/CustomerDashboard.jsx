@@ -50,7 +50,7 @@ export default function CustomerDashboard() {
           <Box mt={4} p={4} borderWidth={1} borderRadius="md" bg="gray.50">
             <Text><strong>Total Spent:</strong> ${data.getCustomerSpending.totalSpent.toFixed(2)}</Text>
             <Text><strong>Average Order Value:</strong> ${data.getCustomerSpending.averageOrderValue.toFixed(2)}</Text>
-            <Text><strong>Last Order Date:</strong> {new Date(data.getCustomerSpending.lastOrderDate).toLocaleDateString()}</Text>
+            <Text><strong>Last Order Date:</strong> {new Date(Number(data.getCustomerSpending.lastOrderDate)).toLocaleDateString()}</Text>
           </Box>
         )}
       </VStack>

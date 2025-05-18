@@ -4,6 +4,8 @@ import TopProducts from "./pages/TopProducts";
 import SalesAnalytics from "./pages/SalesAnalytics";
 import Layout from "./components/Layout";
 import Home from "./pages/Home";
+import CustomerOrders from "./pages/CustomerOrders";
+import PlaceOrder from "./pages/PlaceOrder";
 
 function App() {
   return (
@@ -14,6 +16,8 @@ function App() {
           <Route path="/dashboard" element={<CustomerDashboard />} />
           <Route path="/top-products" element={<TopProducts />} />
           <Route path="/sales-analytics" element={<SalesAnalytics />} />
+          <Route path="/orders" element={<CustomerOrders />} />
+          <Route path="/place-order" element={<PlaceOrder />} />
         </Routes>
       </Layout>
     </Router>

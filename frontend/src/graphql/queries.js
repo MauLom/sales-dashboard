@@ -33,3 +33,21 @@ export const GET_SALES_ANALYTICS = gql`
   }
 `;
 
+export const GET_CUSTOMER_ORDERS = gql`
+  query GetCustomerOrders($customerId: ID!, $page: Int, $limit: Int) {
+    getCustomerOrders(customerId: $customerId, page: $page, limit: $limit) {
+      _id
+      totalAmount
+      status
+      orderDate
+      items {
+        product {
+          name
+        }
+        quantity
+      }
+    }
+  }
+`;
+
+

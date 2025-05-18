@@ -9,6 +9,8 @@ export default function Sidebar() {
         <Link as={NavLink} to="/dashboard">📊 Clients</Link>
         <Link as={NavLink} to="/top-products">🛒 Products</Link>
         <Link as={NavLink} to="/sales-analytics">📈 Sellings</Link>
+        <Link as={NavLink} to="/orders">📄 Orders</Link>
+        <Link as={NavLink} to="/place-order">➕ Place Order</Link>
       </VStack>
     </Box>
   );

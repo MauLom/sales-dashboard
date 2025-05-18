@@ -27,3 +27,44 @@ query GetSalesAnalytics {
     }
   }
 }
+
+# 📦 Place Order
+mutation PlaceOrder {
+  placeOrder(
+    input: {
+      customerId: "REPLACE_WITH_CUSTOMER_ID"
+      items: [
+        { productId: "REPLACE_PRODUCT_ID_1", quantity: 2 }
+        { productId: "REPLACE_PRODUCT_ID_2", quantity: 1 }
+      ]
+    }
+  ) {
+    _id
+    totalAmount
+    status
+    orderDate
+    items {
+      product {
+        name
+        price
+      }
+      quantity
+    }
+  }
+}
+
+# 📄 Get Customer Orders (paginated)
+query GetCustomerOrders {
+  getCustomerOrders(customerId: "REPLACE_WITH_CUSTOMER_ID", page: 1, limit: 5) {
+    _id
+    totalAmount
+    status
+    orderDate
+    items {
+      product {
+        name
+      }
+      quantity
+    }
+  }
+}
