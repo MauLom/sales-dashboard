@@ -61,16 +61,23 @@ const typeDefs = gql`
     items: [OrderItemInput!]!
   }
 
+  type Customer {
+    _id: ID!
+    name: String
+  }
+
   type Query {
     getCustomerSpending(customerId: ID!): CustomerSpending
     getTopSellingProducts(limit: Int!): [TopProduct]
     getSalesAnalytics(startDate: String!, endDate: String!): SalesAnalytics
     getCustomerOrders(customerId: ID!, page: Int, limit: Int): [Order]
+    getAllCustomers: [Customer]
   }
 
   type Mutation {
     placeOrder(input: PlaceOrderInput!): Order
   }
+
 `;
 
 module.exports = typeDefs;
