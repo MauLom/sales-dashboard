@@ -12,7 +12,12 @@ import {
   Td,
   Spinner,
   Alert,
-  AlertIcon
+  AlertIcon,
+  NumberInput,
+  NumberInputField,
+  FormControl,
+  FormLabel,
+  HStack
 } from "@chakra-ui/react";
 import { GET_TOP_PRODUCTS } from "../graphql/queries";
 
@@ -23,19 +28,38 @@ export default function TopProducts() {
     variables: { limit }
   });
 
-  const handleLimitChange = (e) => {
+  const handleSelectChange = (e) => {
     setLimit(parseInt(e.target.value));
+  };
+
+  const handleNumberChange = (value) => {
+    const intValue = parseInt(value);
+    if (!isNaN(intValue) && intValue > 0) {
+      setLimit(intValue);
+    }
   };
 
   return (
     <Box maxW="3xl" mx="auto" mt={10} p={6}>
-      <Heading size="md" mb={4}>Productos Más Vendidos</Heading>
+      <Heading size="md" mb={4}>Top Selling Products</Heading>
 
-      <Select value={limit} onChange={handleLimitChange} mb={4} maxW="200px">
-        <option value={5}>Top 5</option>
-        <option value={10}>Top 10</option>
-        <option value={20}>Top 20</option>
-      </Select>
+      <HStack mb={4} spacing={6}>
+        <FormControl maxW="200px">
+          <FormLabel fontSize="sm">Quick Limit</FormLabel>
+          <Select value={limit} onChange={handleSelectChange}>
+            <option value={5}>Top 5</option>
+            <option value={10}>Top 10</option>
+            <option value={20}>Top 20</option>
+          </Select>
+        </FormControl>
+
+        <FormControl maxW="200px">
+          <FormLabel fontSize="sm">Custom Limit</FormLabel>
+          <NumberInput min={1} value={limit} onChange={handleNumberChange}>
+            <NumberInputField />
+          </NumberInput>
+        </FormControl>
+      </HStack>
 
       {loading && <Spinner />}
       {error && (
@@ -49,9 +73,9 @@ export default function TopProducts() {
         <Table variant="simple">
           <Thead>
             <Tr>
-              <Th>Nombre</Th>
-              <Th isNumeric>Cantidad Vendida</Th>
-              <Th isNumeric>Precio</Th>
+              <Th>Name</Th>
+              <Th isNumeric>Quantity Sold</Th>
+              <Th isNumeric>Price</Th>
             </Tr>
           </Thead>
           <Tbody>
