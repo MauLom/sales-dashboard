@@ -19,3 +19,17 @@ export const GET_TOP_PRODUCTS = gql`
     }
   }
 `;
+
+export const GET_SALES_ANALYTICS = gql`
+  query GetSalesAnalytics($startDate: String!, $endDate: String!) {
+    getSalesAnalytics(startDate: $startDate, endDate: $endDate) {
+      totalRevenue
+      completedOrders
+      revenuePerCategory {
+        category
+        revenue
+      }
+    }
+  }
+`;
+
