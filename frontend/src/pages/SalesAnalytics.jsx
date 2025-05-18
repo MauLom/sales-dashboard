@@ -25,7 +25,7 @@ export default function SalesAnalytics() {
 
   return (
     <Box maxW="4xl" mx="auto" mt={10} p={6}>
-      <Heading size="md" mb={4}>Análisis de Ventas</Heading>
+      <Heading size="md" mb={4}>Sales Analytics</Heading>
 
       <VStack spacing={4} align="stretch" mb={6}>
         <Input
@@ -38,7 +38,7 @@ export default function SalesAnalytics() {
           value={endDate}
           onChange={(e) => setEndDate(e.target.value)}
         />
-        <Button colorScheme="teal" onClick={handleSearch}>Consultar</Button>
+        <Button colorScheme="teal" onClick={handleSearch}>Submit</Button>
       </VStack>
 
       {loading && <Spinner />}
@@ -52,8 +52,8 @@ export default function SalesAnalytics() {
       {data?.getSalesAnalytics && (
         <>
           <Box mb={6}>
-            <Text><strong>Total de ingresos:</strong> ${data.getSalesAnalytics.totalRevenue.toFixed(2)}</Text>
-            <Text><strong>Órdenes completadas:</strong> {data.getSalesAnalytics.completedOrders}</Text>
+            <Text><strong>Total Revenue:</strong> ${data.getSalesAnalytics.totalRevenue.toFixed(2)}</Text>
+            <Text><strong>Completed Orders:</strong> {data.getSalesAnalytics.completedOrders}</Text>
           </Box>
 
           <Box h="300px">
@@ -69,5 +69,6 @@ export default function SalesAnalytics() {
         </>
       )}
     </Box>
-  );
+  )
+    ;
 }

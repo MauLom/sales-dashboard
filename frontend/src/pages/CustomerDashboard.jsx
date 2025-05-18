@@ -27,14 +27,14 @@ export default function CustomerDashboard() {
 
   return (
     <Box maxW="lg" mx="auto" mt={10} p={6} borderWidth={1} borderRadius="lg">
-      <Heading size="md" mb={4}>Buscar Cliente</Heading>
+      <Heading size="md" mb={4}>Customer Lookup</Heading>
       <VStack spacing={4} align="stretch">
         <Input
-          placeholder="ID del Cliente"
+          placeholder="Enter Customer ID"
           value={customerId}
           onChange={(e) => setCustomerId(e.target.value)}
         />
-        <Button colorScheme="blue" onClick={handleSearch}>Consultar</Button>
+        <Button colorScheme="blue" onClick={handleSearch}>Search</Button>
 
         {loading && <Spinner />}
 
@@ -48,12 +48,13 @@ export default function CustomerDashboard() {
 
         {data?.getCustomerSpending && (
           <Box mt={4} p={4} borderWidth={1} borderRadius="md" bg="gray.50">
-            <Text><strong>Total Gastado:</strong> ${data.getCustomerSpending.totalSpent.toFixed(2)}</Text>
-            <Text><strong>Promedio por Orden:</strong> ${data.getCustomerSpending.averageOrderValue.toFixed(2)}</Text>
-            <Text><strong>Última Orden:</strong> {new Date(data.getCustomerSpending.lastOrderDate).toLocaleDateString()}</Text>
+            <Text><strong>Total Spent:</strong> ${data.getCustomerSpending.totalSpent.toFixed(2)}</Text>
+            <Text><strong>Average Order Value:</strong> ${data.getCustomerSpending.averageOrderValue.toFixed(2)}</Text>
+            <Text><strong>Last Order Date:</strong> {new Date(data.getCustomerSpending.lastOrderDate).toLocaleDateString()}</Text>
           </Box>
         )}
       </VStack>
     </Box>
-  );
+  )
+    ;
 }
