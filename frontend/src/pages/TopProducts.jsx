@@ -55,7 +55,7 @@ export default function TopProducts() {
 
         <FormControl maxW="200px">
           <FormLabel fontSize="sm">Custom Limit</FormLabel>
-          <NumberInput min={1} defaultValue={limit} onChange={handleNumberChange}>
+          <NumberInput min={1} value={limit} onChange={handleNumberChange}>
             <NumberInputField />
           </NumberInput>
         </FormControl>
