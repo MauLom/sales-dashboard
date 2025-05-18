@@ -1,4 +1,4 @@
-# 🔩 Sales & Revenue Dashboard
+# 🧩 Sales & Revenue Dashboard
 
 Full-Stack take-home assignment for an e-commerce analytics dashboard.
 
@@ -6,8 +6,8 @@ Full-Stack take-home assignment for an e-commerce analytics dashboard.
 
 ```
 sales-dashboard/
-🔺📂 backend/       # Node.js + Express + Apollo Server + MongoDB
-🔺📂 frontend/      # React + Apollo Client + Chakra UI
+├── backend/       # Node.js + Express + Apollo Server + MongoDB
+└── frontend/      # React + Apollo Client + Chakra UI
 ```
 
 ---
@@ -20,8 +20,8 @@ sales-dashboard/
 cd backend
 npm install
 cp .env.example .env
-npm run seed       # Optional: populate test data
-npm run dev        # Runs server with nodemon
+npm run seed       # Populate test data
+npm run dev        # Start server with nodemon
 ```
 
 📂 `.env` example:
@@ -30,7 +30,7 @@ npm run dev        # Runs server with nodemon
 MONGO_URI=mongodb://localhost:27017/sales_dashboard
 ```
 
-The server will run at:
+Backend GraphQL available at:
 `http://localhost:4000/graphql`
 
 ---
@@ -43,27 +43,39 @@ npm install
 npm start
 ```
 
-The app will run at:
+Frontend available at:
 `http://localhost:3000`
 
 ---
 
-## 🔍 Functional Overview
+## 🔍 Functional Pages
 
-### 1. Customer Dashboard
+### 1. Customer Dashboard `/`
 
 * Input: Customer ID
-* Output: Total spent, average order value, last order date
+* Output:
 
-### 2. Top Products
+  * Total spent
+  * Average order value
+  * Last order date
 
-* Filter: Limit selector (5, 10, 20)
-* Output: Product list with name, quantity sold, price
+### 2. Top Products `/top-products`
 
-### 3. Sales Analytics
+* Filter: Limit (5, 10, 20)
+* Output:
 
-* Input: Date range
-* Output: Revenue stats, completed orders, category-wise chart
+  * Name
+  * Quantity sold
+  * Price
+
+### 3. Sales Analytics `/sales-analytics`
+
+* Input: Date range (start + end)
+* Output:
+
+  * Total revenue
+  * Completed orders
+  * Bar chart of revenue per category
 
 ---
 
@@ -73,55 +85,37 @@ The app will run at:
 
 * Node.js, Express, Apollo Server
 * MongoDB, Mongoose
-* GraphQL (typeDefs + resolvers)
-* Redis (optional)
-* Docker (optional)
+* GraphQL + Aggregation Pipeline
+* Indexed fields for performance (`orderDate`, `status`)
 
 ### Frontend
 
-* React
+* React.js
 * Apollo Client
 * Chakra UI
-* Chart.js or Recharts
-* React Router
+* Recharts
+* React Router DOM
 
 ---
 
-## 📌 Dev Scripts
+## 📁 Directory Overview
 
-### Backend
-
-* `npm run dev` – run backend with `nodemon`
-* `npm run seed` – populate mock data
-
-### Frontend
-
-* `npm start` – run development server
-
----
-
-## 📁 To-Do via Pull Requests
-
-* [ ] Add GraphQL typeDefs and resolvers
-* [ ] Implement queries: `getCustomerSpending`, `getTopSellingProducts`, `getSalesAnalytics`
-* [ ] Build customer dashboard UI
-* [ ] Add date picker and product filters
-* [ ] Add error and loading states
-* [ ] Bonus: Redis caching, Docker, tests
-
----
-
-## ✅ Submission Checklist
-
-* [ ] Functional backend with GraphQL queries
-* [ ] Responsive frontend with dashboards
-* [ ] `.env.example` and seed data
-* [ ] README with setup instructions
-* [ ] Sample GraphQL queries (`/queries.graphql`)
-* [ ] Screenshots (optional)
-
----
+```
+/backend
+  ├── models/
+  ├── resolvers/
+  ├── schema/
+  ├── server.js
+  ├── seed.js
+/frontend
+  └── src/
+      ├── components/
+      ├── pages/
+      ├── graphql/
+      ├── App.js
+      ├── index.js
+```
 
 ## 👤 Author
 
-Mauricio Lombano – 2025
+Mauricio Lombano – mauricio.lombano@gmail.com –2025

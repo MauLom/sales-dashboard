@@ -1,0 +1,29 @@
+# 🔍 Get Customer Spending
+query GetCustomerSpending {
+  getCustomerSpending(customerId: "REPLACE_WITH_ID") {
+    totalSpent
+    averageOrderValue
+    lastOrderDate
+  }
+}
+
+# 🛍️ Get Top Selling Products
+query GetTopSellingProducts {
+  getTopSellingProducts(limit: 5) {
+    name
+    quantitySold
+    price
+  }
+}
+
+# 📊 Get Sales Analytics
+query GetSalesAnalytics {
+  getSalesAnalytics(startDate: "2024-12-01", endDate: "2025-12-31") {
+    totalRevenue
+    completedOrders
+    revenuePerCategory {
+      category
+      revenue
+    }
+  }
+}
