@@ -50,6 +50,9 @@ const getSalesAnalytics = async (_, { startDate, endDate }) => {
               category: "$_id",
               revenue: 1
             }
+          },
+          {
+            $sort: { category: 1 }
           }
         ]
       }
