@@ -79,8 +79,8 @@ export default function TopProducts() {
             </Tr>
           </Thead>
           <Tbody>
-            {data.getTopSellingProducts.map((product, index) => (
-              <Tr key={index}>
+            {data.getTopSellingProducts.map((product) => (
+              <Tr key={product.id}>
                 <Td>{product.name}</Td>
                 <Td isNumeric>{product.quantitySold}</Td>
                 <Td isNumeric>${product.price.toFixed(2)}</Td>
