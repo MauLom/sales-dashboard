@@ -1,6 +1,6 @@
 # 🧩 Sales & Revenue Dashboard
 
-Full-Stack take-home assignment for an e-commerce analytics dashboard.
+Full-Stack project for an e-commerce analytics dashboard.
 
 ## 📦 Project Structure
 
