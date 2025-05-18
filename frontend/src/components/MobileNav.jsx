@@ -9,6 +9,8 @@ export default function MobileNav() {
         <Link as={NavLink} to="/dashboard">📊</Link>
         <Link as={NavLink} to="/top-products">🛒</Link>
         <Link as={NavLink} to="/sales-analytics">📈</Link>
+        <Link as={NavLink} to="/orders">📄</Link>
+        <Link as={NavLink} to="/place-order">➕</Link>
       </HStack>
     </Box>
   );
