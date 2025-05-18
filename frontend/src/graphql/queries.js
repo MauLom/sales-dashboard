@@ -50,4 +50,13 @@ export const GET_CUSTOMER_ORDERS = gql`
   }
 `;
 
+export const GET_ALL_CUSTOMERS = gql`
+  query GetAllCustomers {
+    getAllCustomers {
+      _id
+      name
+    }
+  }
+`;
+
 
