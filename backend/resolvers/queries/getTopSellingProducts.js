@@ -1,5 +1,4 @@
 const Order = require("../../models/Order");
-const mongoose = require("mongoose");
 
 const getTopSellingProducts = async (_, { limit }) => {
   const results = await Order.aggregate([
