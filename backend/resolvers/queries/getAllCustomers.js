@@ -1,5 +1,7 @@
 const Customer = require("../../models/Customer");
+const { requireAuth } = require("../../middleware/auth");
 
-module.exports = async () => {
-  return await Customer.find({}, "_id name").sort({ name: 1 });
+module.exports = async (_, args, context) => {
+  const user = requireAuth(context.user);
+  return await Customer.find({ userId: user._id }, "_id name").sort({ name: 1 });
 };

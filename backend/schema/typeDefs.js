@@ -1,6 +1,28 @@
 const { gql } = require("apollo-server-express");
 
 const typeDefs = gql`
+  type User {
+    _id: ID!
+    email: String!
+    name: String!
+  }
+
+  type AuthPayload {
+    token: String!
+    user: User!
+  }
+
+  input RegisterInput {
+    email: String!
+    password: String!
+    name: String!
+  }
+
+  input LoginInput {
+    email: String!
+    password: String!
+  }
+
   type CustomerSpending {
     totalSpent: Float
     averageOrderValue: Float
@@ -61,12 +83,8 @@ const typeDefs = gql`
     items: [OrderItemInput!]!
   }
 
-  type Customer {
-    _id: ID!
-    name: String
-  }
-
   type Query {
+    me: User
     getCustomerSpending(customerId: ID!): CustomerSpending
     getTopSellingProducts(limit: Int!): [TopProduct]
     getSalesAnalytics(startDate: String!, endDate: String!): SalesAnalytics
@@ -75,6 +93,8 @@ const typeDefs = gql`
   }
 
   type Mutation {
+    register(input: RegisterInput!): AuthPayload!
+    login(input: LoginInput!): AuthPayload!
     placeOrder(input: PlaceOrderInput!): Order
   }
 

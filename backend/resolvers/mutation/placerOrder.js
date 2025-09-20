@@ -1,8 +1,17 @@
 const Order = require("../../models/Order");
 const Product = require("../../models/Product");
+const Customer = require("../../models/Customer");
+const { requireAuth } = require("../../middleware/auth");
 
-const placeOrder = async (_, { input }) => {
+const placeOrder = async (_, { input }, context) => {
+  const user = requireAuth(context.user);
   const { customerId, items } = input;
+
+  // Verify customer belongs to authenticated user
+  const customer = await Customer.findOne({ _id: customerId, userId: user._id });
+  if (!customer) {
+    throw new Error("Customer not found or access denied");
+  }
 
   const productDocs = await Product.find({
     _id: { $in: items.map(item => item.productId) }
