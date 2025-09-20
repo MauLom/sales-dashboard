@@ -11,6 +11,7 @@ export default function Sidebar() {
         <Link as={NavLink} to="/sales-analytics">📈 Sellings</Link>
         <Link as={NavLink} to="/orders">📄 Orders</Link>
         <Link as={NavLink} to="/place-order">➕ Place Order</Link>
+        <Link as={NavLink} to="/capital-growth">💰 Capital Growth</Link>
       </VStack>
     </Box>
   );
