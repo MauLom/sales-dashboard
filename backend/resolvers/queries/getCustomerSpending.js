@@ -1,7 +1,17 @@
 const mongoose = require("mongoose");
 const Order = require("../../models/Order");
+const Customer = require("../../models/Customer");
+const { requireAuth } = require("../../middleware/auth");
 
-const getCustomerSpending = async (_, { customerId }) => {
+const getCustomerSpending = async (_, { customerId }, context) => {
+  const user = requireAuth(context.user);
+  
+  // Verify customer belongs to authenticated user
+  const customer = await Customer.findOne({ _id: customerId, userId: user._id });
+  if (!customer) {
+    throw new Error("Customer not found or access denied");
+  }
+
   const data = await Order.aggregate([
     { $match: { customer: new mongoose.Types.ObjectId(customerId), status: "completed" } },
     {
