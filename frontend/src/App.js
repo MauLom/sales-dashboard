@@ -6,6 +6,7 @@ import Layout from "./components/Layout";
 import Home from "./pages/Home";
 import CustomerOrders from "./pages/CustomerOrders";
 import PlaceOrder from "./pages/PlaceOrder";
+import CapitalGrowth from "./pages/CapitalGrowth";
 
 function App() {
   return (
@@ -18,6 +19,7 @@ function App() {
           <Route path="/sales-analytics" element={<SalesAnalytics />} />
           <Route path="/orders" element={<CustomerOrders />} />
           <Route path="/place-order" element={<PlaceOrder />} />
+          <Route path="/capital-growth" element={<CapitalGrowth />} />
         </Routes>
       </Layout>
     </Router>
